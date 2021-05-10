@@ -3,7 +3,6 @@ package nl.teuno.simplecalculator.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Entity
 @Data
@@ -11,7 +10,7 @@ import java.math.BigDecimal;
 public class Calculation {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
