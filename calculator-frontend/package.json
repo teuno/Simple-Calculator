@@ -7,15 +7,20 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "precommit": "lint-staged",
+    "prettify": "prettier --write ./**/*.{json,css,scss,md,js,ts}"
   },
   "private": true,
   "dependencies": {
+    "@angular-buddies/prettier": "^1.0.0-alpha.3",
     "@angular/animations": "~11.2.4",
+    "@angular/cdk": "^11.2.12",
     "@angular/common": "~11.2.4",
     "@angular/compiler": "~11.2.4",
     "@angular/core": "~11.2.4",
     "@angular/forms": "~11.2.4",
+    "@angular/material": "^11.2.12",
     "@angular/platform-browser": "~11.2.4",
     "@angular/platform-browser-dynamic": "~11.2.4",
     "@angular/router": "~11.2.4",
@@ -40,6 +45,9 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.1.5"
+    "typescript": "~4.1.5",
+    "prettier": "^1.12.1",
+    "lint-staged": "^7.1.2",
+    "husky": "^0.14.3"
   }
 }
