@@ -1,9 +1,12 @@
 package nl.teuno.simplecalculator.models;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Data
 @Table(name = "calculation")
 public class Calculation {
 
@@ -13,14 +16,14 @@ public class Calculation {
     private Long id;
 
     @Column(name = "first_number", nullable = false)
-    private Long firstNumber;
+    private int firstNumber;
 
     @Column(name = "second_number", nullable = false)
-    private Long secondNumber;
+    private int secondNumber;
 
     @Column(name = "operator", nullable = false)
     private String operator;
 
-    @Column(name = "outcome", precision=18, scale=2, nullable = false)
-    private BigDecimal minValue;
+    @Column(name = "outcome", nullable = false)
+    private double outcome;
 }

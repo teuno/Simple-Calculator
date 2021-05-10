@@ -20,7 +20,7 @@
             <column name="operator" type="VARCHAR(10)">
                 <constraints nullable="false"/>
             </column>
-            <column name="outcome" type="decimal(18,2)">
+            <column name="outcome" type="DOUBLE">
                 <constraints nullable="false"/>
             </column>
         </createTable>

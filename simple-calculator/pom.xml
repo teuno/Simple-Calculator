@@ -69,6 +69,9 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<!--			todo fix local sdkman problem-->
+			<!--			todo add JACOCO-->
 		</plugins>
 	</build>
 
