@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="teuno" id="1">
+        <createTable tableName="calculation">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="first_number" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="second_number" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="operator" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="outcome" type="decimal(18,2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable tableName="calculation"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
