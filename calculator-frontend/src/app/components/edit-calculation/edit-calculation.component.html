@@ -1,0 +1,31 @@
+<p>edit-calculation works!</p>
+
+<form [formGroup]="form"
+      (ngSubmit)="submit()">
+
+  <mat-form-field appearance="fill">
+    <mat-label for="firstNumber">First number:</mat-label>
+    <input matInput id="firstNumber" formControlName="firstNumber"/>
+    <mat-error *ngIf="form.controls.firstNumber.errors?.required && form.controls.firstNumber.touched"
+    > *Required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label for="operator">Operator:</mat-label>
+    <input matInput id="operator" formControlName="operator"/>
+    <mat-error *ngIf="form.controls.operator.errors?.required && form.controls.operator.touched"
+    > *Required
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label for="secondNumber">Second number:</mat-label>
+    <input matInput id="secondNumber" formControlName="secondNumber"/>
+    <mat-error *ngIf="form.controls.secondNumber.errors?.required && form.controls.secondNumber.touched"
+    > *Required
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-button color="primary" [disabled]="!form.valid">Execute calculation</button>
+</form>
