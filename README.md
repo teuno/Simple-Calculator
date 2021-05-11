@@ -9,17 +9,20 @@ in de volgende volgorde te werken:
 - component angular
 - service angular
 
-Het angular testen ging wat stroef en dit stuk van de feature is helaas niet af. Hierdoor was er ook geen tijd om met
-het overzicht van de berekeningen aan de gang te gaan.
-
 ## Backend (folder simple-calculator)
 
 De applicatie heeft java 11 nodig. De applicatie wordt opgestart door middel van het commando ```./mvnw boot:run``` in
-de root van de simple-calculator folder. Integratie testen van de gehele service ontbreken. Er zijn unittestsen voor
+de root van de simple-calculator folder. De applicatie is hierna beschikbaar op `localhost:8080` Integratie testen van de gehele service ontbreken. Er zijn unittestsen voor
 elke laag.
+
+De endpoints zijn op `api/calculations` POST en GET.
+
 
 ## Frontend (folder calculator-frontend)
 
-De applicatie kan worden opgestart door middel van ```ng serve``` in de root van de calculator-frontend folder. Deze is
+De applicatie kan worden opgestart door middel van ```ng serve``` in de root van de calculator-frontend folder. De applicatie is hierna beschikbaar op `localhost:4200` Deze is
 afhankelijk van de backend applicatie. Met ```ng test``` worden de unittests gerunt. Er zijn geen aparte e2e tests
-geschreven. De default angular e2e test zit er nog in maar werkt niet. 
+geschreven. De default angular e2e test zit er nog in maar werkt niet.
+
+De routes zijn:
+`create-calculation` en `list-calculations`.
