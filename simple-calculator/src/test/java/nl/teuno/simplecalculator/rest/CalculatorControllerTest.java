@@ -7,6 +7,7 @@ import nl.teuno.simplecalculator.models.Calculation;
 import nl.teuno.simplecalculator.rest.controllers.CalculatorController;
 import nl.teuno.simplecalculator.rest.dtos.CalculationDto;
 import nl.teuno.simplecalculator.services.CalculatorService;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -41,8 +42,15 @@ class CalculatorControllerTest {
         calculation.setSecondNumber(1);
         calculation.setOperator("+");
 
+        Calculation body = new Calculation();
+        body.setId(1L);
+        body.setFirstNumber(1);
+        body.setSecondNumber(1);
+        body.setOperator("+");
+        body.setOutcome(2.0);
+
         Mockito.when(calculatorService.executeCalculation(isA(Calculation.class)))
-                .thenReturn(new Calculation());
+                .thenReturn(body);
 
         RestAssuredMockMvc.given()
                 .contentType("application/json")
@@ -50,7 +58,12 @@ class CalculatorControllerTest {
                 .when()
                 .post("/api/calculations")
                 .then()
-                .statusCode(201);
+                .statusCode(201)
+                .body("id", Matchers.equalTo(1))
+                .body("firstNumber", Matchers.equalTo(1))
+                .body("secondNumber", Matchers.equalTo(1))
+                .body("operator", Matchers.equalTo("+"))
+                .body("outcome", Matchers.equalTo(2.0f));//for some reason json thinks the double is different. With f the check works.
     }
 
     @Test

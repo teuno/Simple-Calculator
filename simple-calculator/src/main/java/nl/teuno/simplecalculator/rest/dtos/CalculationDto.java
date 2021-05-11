@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class CalculationDto {
 
+    private Long id;
     @NotNull(message = "firstNumber may not be empty")
     private Integer firstNumber;
     @NotNull(message = "secondNumber may not be empty")
@@ -17,4 +18,5 @@ public class CalculationDto {
     @NotNull
     @NotEmpty
     private String operator;
+    private double outcome;
 }

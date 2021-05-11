@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import nl.teuno.simplecalculator.rest.dtos.CalculationDto;
 import nl.teuno.simplecalculator.rest.mappers.CalculationMapper;
 import nl.teuno.simplecalculator.services.CalculatorService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 
@@ -21,16 +21,13 @@ public class CalculatorController {
     private final CalculatorService calculatorService;
 
     @PostMapping
-    public ResponseEntity<Void> executeCalculation(
-            @Valid @RequestBody CalculationDto calculationDto, UriComponentsBuilder uriComponentsBuilder
-                                                  ) {
-        var calculation = CalculationMapper.INSTANCE.toCalculation(calculationDto);
-        calculatorService.executeCalculation(calculation);
+    public ResponseEntity<CalculationDto> executeCalculation(
+            @Valid @RequestBody CalculationDto calculationDto) {
+        var calculation = calculatorService.executeCalculation(
+                CalculationMapper.INSTANCE.toCalculation(calculationDto));
 
-        var uriComponents = uriComponentsBuilder.path("/api/calculations/{id}")
-                .buildAndExpand(calculation.getId());
+        var body = CalculationMapper.INSTANCE.toDto(calculation);
 
-        return ResponseEntity.created(uriComponents.toUri())
-                .build();
+        return new ResponseEntity<>(body, HttpStatus.CREATED);
     }
 }
