@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Calculation } from '../dto/Calculation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { RowCalculation } from '../dto/RowCalculation';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +27,10 @@ export class CalculatorService {
         console.log('Error statuscode: ', response.status);
       }
     );
+  }
+
+  getCalculations(): Observable<RowCalculation[]> {
+    const url = `${this.BASE_URL}`;
+    return this.http.get<RowCalculation[]>(url, this.httpOptions);
   }
 }

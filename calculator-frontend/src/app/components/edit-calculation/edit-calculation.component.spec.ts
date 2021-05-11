@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { EditCalculationComponent } from './edit-calculation.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -11,16 +11,18 @@ describe('EditCalculationComponent', () => {
   let mockCalculatorService: CalculatorService;
 
   beforeEach(async () => {
-    mockCalculatorService = jasmine.createSpyObj('CalculatorService', ['saveCalculation']);
+    mockCalculatorService = jasmine.createSpyObj<CalculatorService>(['saveCalculation']);
 
     await TestBed.configureTestingModule({
-      // not working because keeps wanting a httpclient, but why is that needed if I mock my service...
       declarations: [EditCalculationComponent],
       imports: [ReactiveFormsModule],
-      providers: [CalculatorService]
-    })
-      .overrideProvider(CalculatorService, { useValue: mockCalculatorService })
-      .compileComponents();
+      providers: [
+        {
+          provide: CalculatorService,
+          useValue: mockCalculatorService
+        }
+      ]
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -63,12 +65,14 @@ describe('EditCalculationComponent', () => {
   it('When the submit button is pressed the form is submitted', () => {
     spyOn(component, 'submit');
     component.form.controls.firstNumber.setValue(2);
+    expect(component.form.valid).toBeFalsy();
     component.form.controls.operator.setValue('+');
+    expect(component.form.valid).toBeFalsy();
     component.form.controls.secondNumber.setValue(2);
+    expect(component.form.valid).toBeTruthy();
 
     fixture.debugElement.query(By.css('form')).triggerEventHandler('submit', null);
     fixture.detectChanges();
     expect(component.submit).toHaveBeenCalledTimes(1);
-    // component.submit();
   });
 });

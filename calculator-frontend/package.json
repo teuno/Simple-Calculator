@@ -6,6 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "testdirectory": "ng test -- --include src/app/components",
+    "testfile": "ng test --include src/app/services/calculator.service.spec.ts",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "precommit": "lint-staged",

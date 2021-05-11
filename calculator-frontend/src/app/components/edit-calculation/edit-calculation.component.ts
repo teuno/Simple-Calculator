@@ -14,7 +14,7 @@ export class EditCalculationComponent implements OnInit {
   constructor(private calculatorService: CalculatorService, private fb: FormBuilder) {
     this.form = this.fb.group({
       firstNumber: ['', Validators.required],
-      secondNumber: ['', Validators.required], // possibly later add not 0 check, to prevent user sending not valid data in the first place.
+      secondNumber: ['', Validators.required], // clientside devide by 0 check to be added to have better user friendliness.
       operator: ['', Validators.required] // possible latter change to dropdown.
     });
   }

@@ -1,16 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditCalculationComponent } from './components/edit-calculation/edit-calculation.component';
+import { ListCalculationsComponent } from './components/list-calculations/list-calculations.component';
 
 const routes: Routes = [
+  {
+    path: 'list-calculations',
+    component: ListCalculationsComponent
+  },
   {
     path: 'create-calculation',
     component: EditCalculationComponent
   },
   {
-    // todo make a still to calculations component the main component.
     path: '',
-    redirectTo: 'create-calculation',
+    redirectTo: 'list-calculations',
     pathMatch: 'full'
   }
 ];

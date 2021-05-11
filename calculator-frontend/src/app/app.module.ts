@@ -13,9 +13,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CalculatorService } from './services/calculator.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ListCalculationsComponent } from './components/list-calculations/list-calculations.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
-  declarations: [AppComponent, EditCalculationComponent],
+  declarations: [AppComponent, EditCalculationComponent, ListCalculationsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
 
     BrowserAnimationsModule,
+    MatTableModule,
     MatSidenavModule,
     MatGridListModule,
     MatFormFieldModule,
