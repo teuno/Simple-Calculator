@@ -1,9 +1,12 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditCalculationComponent } from './edit-calculation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { CalculatorService } from '../../services/calculator.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('EditCalculationComponent', () => {
   let component: EditCalculationComponent;
@@ -15,7 +18,7 @@ describe('EditCalculationComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [EditCalculationComponent],
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, BrowserAnimationsModule],
       providers: [
         {
           provide: CalculatorService,

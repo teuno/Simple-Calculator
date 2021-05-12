@@ -14,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'list-calculations',
+    redirectTo: 'create-calculation',
     pathMatch: 'full'
   }
 ];

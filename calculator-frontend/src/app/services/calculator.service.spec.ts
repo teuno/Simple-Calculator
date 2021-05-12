@@ -4,7 +4,7 @@ import { CalculatorService } from './calculator.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RowCalculation } from '../dto/RowCalculation';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Calculation } from '../dto/Calculation';
+import { Calculation } from '../model/Calculation';
 
 describe('CalculatorService', () => {
   let httpClient: HttpClient;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Calculation } from '../dto/Calculation';
+import { Calculation } from '../model/Calculation';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { RowCalculation } from '../dto/RowCalculation';

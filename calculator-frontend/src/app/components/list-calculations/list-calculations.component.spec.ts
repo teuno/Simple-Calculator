@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListCalculationsComponent } from './list-calculations.component';
 import { CalculatorService } from '../../services/calculator.service';
+import { MatTableModule } from '@angular/material/table';
 
 describe('ListCalculationsComponent', () => {
   let component: ListCalculationsComponent;
@@ -18,7 +19,8 @@ describe('ListCalculationsComponent', () => {
           provide: CalculatorService,
           useValue: mockCalculatorService
         }
-      ]
+      ],
+      imports: [MatTableModule]
     }).compileComponents();
   });
 
